@@ -1,0 +1,15 @@
+# Practical No 09: Installing Red Hat Enterprise Linux 7.4 on VMware Workstation
+
+1. Open VMware Workstation -> File -> New Virtual Machine. Click Next
+2. Select "I will install the OS later" -> Select Linux. Select the Red Hat Enterprise Linux 7 64-bit version from the dropdown
+3. Type the name and browse where you want to locate your virtual machine -> Put Maximum disk space to 40 GB
+4. Select Customize Hardware -> Select memory to 4GB
+5. Insert and browse your .iso file in CD/DVD. Then power on the virtual machine
+6. Select install Red Hat Enterprise Linux 7.4
+7. Select the language and go to Software Selection
+8. Select Server with GUI and check Virtualization Client & Virtualization Hypervisor. And then began Installation
+9. Select Root Password. Type the root password
+10. Go to user creation and then enter the details. Click on Reboot
+11. Select Linux Information and accept the conditions
+12. Your account will appear -> type the password
+13. Your Desktop will appear
