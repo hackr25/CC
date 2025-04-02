@@ -41,6 +41,9 @@ public class udpServerEO {
 }
 
 // Client class to send a number and receive even/odd result
+import java.io.*;
+import java.net.*;
+
 public class udpClientEO {
     public static void main(String args[]) {
         try {
@@ -69,7 +72,7 @@ public class udpClientEO {
     }
 }
 
-
+--------------------------------------------------------------------------------------------------------------
 //Factorial Server
 import java.io.*;
 import java.net.*;
@@ -139,6 +142,8 @@ public class udpClientFact {
         }
     }
 }
+
+-----------------------------------------------------------------------------------------------------------------------
 
 //RPC Calculator Server
 import java.io.*;
@@ -266,6 +271,8 @@ class RPCClient {
         new RPCClient();
     }
 }
+
+------------------------------------------------------------------------------------------------------------------------------------------
 
 //RPC Num Server
 import java.io.*;
