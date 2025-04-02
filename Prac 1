@@ -67,6 +67,10 @@ class tcpClientPrime {
 
 
 Practical 1B
+/*
+* File name: ChatApplication.java
+* This file contains both server and client code for prime number checking
+*/
 // Chat Server
 import java.net.*;
 import java.io.*;
