@@ -1,7 +1,7 @@
 /*
 * File name: RMIDateTimeApplication.java
 * This file contains the interface, server, and client code for displaying current date and time using RMI
-* Compile all: javac Jitesh_248742_RMIInterfaceDate.java Jitesh_248742_RMIServerDate.java Jitesh_248742_RMIClientDate.java
+* Compile all: javac RMIInterfaceDate.java RMIServerDate.java RMIClientDate.java
 * Run in separate terminals:
 * 1. Start RMI registry: rmiregistry
 * 2. Run server: java RMIServerDate
