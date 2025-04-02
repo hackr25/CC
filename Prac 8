@@ -1,0 +1,21 @@
+# Practical No 08: Installing VMware ESX
+
+1. Open VMWare Workstation Click on File->New Virtual Machine->Next->Select I will install OS later->Next
+2. Select VMWare ESX -> Name the Virtual Machine -> Enter the Size 100GB->Next
+3. Click on Finish. You can now see your Virtual Machine
+4. Click on Edit virtual machine setting -> Go to CD/DVD. Browse to the ISO file and upload it
+5. Power on the VM and hit enter
+6. Wait for the ESXi to load
+7. Hit Enter and then F11 to continue
+8. Press Enter-> Select the Language
+9. Enter the password and confirm installation
+10. Open VMWare vSphere Client and type in username and password
+11. Hit Enter and wait for rebooting server and then loading
+12. Take a note of the IP address and enter that in the VMWare vSphere Client
+13. Login -> Click on Inventory -> Go the Server -> Configuration
+14. Click on Storage-> data source
+15. Right click on data source -> Browse data source -> Upload the file
+16. Right click on the server -> create new virtual machine -> next
+17. Enter the name of the Virtual Machine -> Click on Next
+18. Select your Operating System and hit Next until Finish
+19. Select Edit virtual machine settings -> Browse to the iso file -> Check connect at power on
