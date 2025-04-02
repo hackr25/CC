@@ -1,0 +1,54 @@
+# Practical No 06: MD5 Hash Implementation in Java
+
+## Java Code for MD5 Hash
+
+```java
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.io.*;
+
+public class MD5 {
+    public static void main(String[] args) {
+        String inputString;
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        try {
+            System.out.print("Enter any text:");
+            inputString = br.readLine();
+            
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            
+            // Get the MD5 hash
+            byte[] hashBytes = md.digest(inputString.getBytes());
+            
+            // Convert byte array to hexadecimal string
+            StringBuilder hexStringBuilder = new StringBuilder();
+            for (byte hashByte : hashBytes) {
+                hexStringBuilder.append(String.format("%02x", hashByte));
+            }
+            
+            // Print the MD5 hash
+            System.out.println("MD5 Hash: " + hexStringBuilder.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+## Steps to Run the Program:
+
+1. Open a text editor and copy the above code
+2. Save the file as `MD5.java`
+3. Open terminal/command prompt and navigate to the directory where you saved the file
+4. Compile the program:
+   ```
+   javac MD5.java
+   ```
+5. Run the program:
+   ```
+   java MD5
+   ```
+6. When prompted, enter the text you want to hash
+7. The program will display the MD5 hash of the entered text
