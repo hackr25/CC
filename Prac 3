@@ -4,14 +4,14 @@
 * Compile all: javac Jitesh_248742_RMIInterfaceDate.java Jitesh_248742_RMIServerDate.java Jitesh_248742_RMIClientDate.java
 * Run in separate terminals:
 * 1. Start RMI registry: rmiregistry
-* 2. Run server: java Jitesh_248742_RMIServerDate
-* 3. Run client: java Jitesh_248742_RMIClientDate
+* 2. Run server: java RMIServerDate
+* 3. Run client: java RMIClientDate
 */
 
 // RMI Interface
 import java.rmi.*;
 
-public interface Jitesh_248742_RMIInterfaceDate extends Remote {
+public interface RMIInterfaceDate extends Remote {
     public String printDate() throws Exception;
 }
 
@@ -22,9 +22,9 @@ import java.util.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-public class Jitesh_248742_RMIServerDate extends UnicastRemoteObject
-implements Jitesh_248742_RMIInterfaceDate {
-    public Jitesh_248742_RMIServerDate() throws Exception {
+public class RMIServerDate extends UnicastRemoteObject
+implements RMIInterfaceDate {
+    public RMIServerDate() throws Exception {
         System.out.println("Server is initialised");
     }
 
@@ -38,8 +38,8 @@ implements Jitesh_248742_RMIInterfaceDate {
 
     public static void main(String[] args) throws Exception {
         System.out.println("RMIServerDate started.");
-        Jitesh_248742_RMIServerDate obj = new Jitesh_248742_RMIServerDate();
-        Naming.bind("Jitesh_248742_RMIServerDate", obj);
+        RMIServerDate obj = new RMIServerDate();
+        Naming.bind("RMIServerDate", obj);
         System.out.println("Object registered.");
     }
 }
@@ -48,12 +48,14 @@ implements Jitesh_248742_RMIInterfaceDate {
 import java.rmi.*;
 import java.io.*;
 
-public class Jitesh_248742_RMIClientDate {
+public class RMIClientDate {
     public static void main(String[] args) throws Exception {
         System.out.println("RMIClientDate started.");
-        Jitesh_248742_RMIInterfaceDate server = (Jitesh_248742_RMIInterfaceDate)
-        Naming.lookup("Jitesh_248742_RMIServerDate");
+        RMIInterfaceDate server = (RMIInterfaceDate)
+        Naming.lookup("RMIServerDate");
         String serverDate = server.printDate();
         System.out.println("Server: " + serverDate);
     }
 }
+
+
