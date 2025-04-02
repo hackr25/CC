@@ -58,4 +58,93 @@ public class RMIClientDate {
     }
 }
 
+/*
+* File name: RMIDigitToWordApplication.java
+* This file contains the interface, server, and client code for converting digits to words using RMI
+* Compile all: javac InterConvert.java ServerConvert.java ClientConvert.java
+* Run in separate terminals:
+* 1. Start RMI registry: rmiregistry
+* 2. Run server: java ServerConvert
+* 3. Run client: java ClientConvert
+*/
+
+// RMI Interface
+import java.rmi.*;
+public interface InterConvert extends Remote {
+public String convertDigit(String no) throws Exception;
+}
+
+
+// RMI Server
+import java.rmi.*;
+import java.rmi.server.*;
+
+public class ServerConvert extends UnicastRemoteObject implements InterConvert {
+    
+    public ServerConvert() throws Exception {
+        // Constructor
+    }
+    
+    public String convertDigit(String no) throws Exception {
+        String str = "";
+        for(int i = 0; i < no.length(); i++) {
+            int p = no.charAt(i);
+            if(p == 48) {
+                str += "zero ";
+            }
+            if(p == 49) {
+                str += "one ";
+            }
+            if(p == 50) {
+                str += "two ";
+            }
+            if(p == 51) {
+                str += "three ";
+            }
+            if(p == 52) {
+                str += "four ";
+            }
+            if(p == 53) {
+                str += "five ";
+            }
+            if(p == 54) {
+                str += "six "; 
+            }
+            if(p == 55) {
+                str += "seven ";
+            }
+            if(p == 56) {
+                str += "eight ";
+            }
+            if(p == 57) {
+                str += "nine ";
+            }
+        }
+        return str;
+    }
+    
+    public static void main(String args[]) throws Exception {
+        ServerConvert s1 = new ServerConvert();
+        Naming.bind("Wrd", s1);
+        System.out.println("Object registered.\t");
+    }
+}
+
+
+// RMI Client
+import java.rmi.*;
+import java.io.*;
+
+public class ClientConvert {
+    public static void main(String args[]) throws Exception {
+        InterConvert h1 = (InterConvert)Naming.lookup("Wrd");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        System.out.println("Enter a number : \t");
+        String no = br.readLine();
+        
+        String ans = h1.convertDigit(no);
+        System.out.println("The word representation of the entered digit is: " + ans);
+    }
+}
 
