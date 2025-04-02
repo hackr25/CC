@@ -64,3 +64,84 @@ class tcpClientPrime {
         }
     }
 }
+
+
+Practical 1B
+// Chat Server
+import java.net.*;
+import java.io.*;
+
+class ChatServer {
+    public static void main(String args[]) {
+        try {
+            ServerSocket ss = new ServerSocket(8000);
+            System.out.println("Waiting for client to connect..");
+            Socket s = ss.accept();
+            
+            // Use BufferedReader for input stream
+            BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            
+            String receive, send;
+            while((receive = in.readLine()) != null) {
+                if(receive.equals("STOP"))
+                    break;
+                    
+                System.out.println("Client Says : " + receive);
+                System.out.print("Server Says : ");
+                send = br.readLine();
+                out.println(send);  // Using println() for automatic line ending
+            }
+            
+            // Close resources
+            br.close();
+            in.close();
+            out.close();
+            s.close();
+            ss.close();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+//Chat Client
+import java.net.*;
+import java.io.*;
+
+class ChatClient {
+    public static void main(String args[]) {
+        try {
+            Socket s = new Socket("localhost", 8000);  // lowercase 'localhost'
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            
+            String msg;
+            System.out.println("To stop chatting with server type STOP");
+            System.out.print("Client Says: ");
+            
+            while((msg = br.readLine()) != null) {
+                out.println(msg);  // Use println() instead of writeBytes()
+                
+                if(msg.equals("STOP"))
+                    break;
+                    
+                System.out.println("Server Says : " + in.readLine());
+                System.out.print("Client Says : ");
+            }
+            
+            // Close resources
+            br.close();
+            in.close();
+            out.close();
+            s.close();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
